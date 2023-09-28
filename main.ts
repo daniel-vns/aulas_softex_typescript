@@ -3,6 +3,7 @@ const texto: null = null;
 const palavra: string = "olá";
 const verdadeiro: boolean = true;
 const lista: Array<string> = ["maçã", "pera"];
+const lista1: Array<number> = new Array(1,2,3,4);
 const objeto: Object = {nome: "daniel", idade: 20};
 
 
