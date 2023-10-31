@@ -58,6 +58,6 @@ interface Sanduiche {
   const meuSanduiche: Sanduiche = new FrangoAssado();
   const sanduicheDecorado: Sanduiche = new QueijoMussarelaRalado(new Pepperoni(meuSanduiche));
   
-  // Imprimir a descrição e o custo do sanduíche final
+  // Imprimir a descrição e o custo do sanduíche final.
   console.log(`${sanduicheDecorado.descricao()} custa $${sanduicheDecorado.custo().toFixed(2)}`);
   
