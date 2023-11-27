@@ -1,33 +1,29 @@
 class SistemaSeguranca {
-    private static instancia: SistemaSeguranca | null = null;
-    private senhaBaseSecreta: string = "senhaSuperSecreta123";
-  
-    private constructor() {
-      // Construtor privado para evitar a criação direta de instâncias.
-    }
-  
-    public static getInstance(): SistemaSeguranca {
+  private static instancia: SistemaSeguranca;
+  private senhaSecreta: string;
+
+  private constructor() {
+      this.senhaSecreta = 'senhaSuperSecreta'; // Defina a senha secreta aqui
+  }
+
+  public static getInstancia(): SistemaSeguranca {
       if (!SistemaSeguranca.instancia) {
-        SistemaSeguranca.instancia = new SistemaSeguranca();
+          SistemaSeguranca.instancia = new SistemaSeguranca();
       }
       return SistemaSeguranca.instancia;
-    }
-  
-    public acessarBaseSecreta(senhaInserida: string): void {
-      if (senhaInserida === this.senhaBaseSecreta) {
-        console.log("Acesso concedido à Base Secreta. Missão cumprida, agente!");
-      } else {
-        console.log("Senha incorreta. Acesso negado. Intruso detectado!");
-      }
-    }
   }
-  
-  // Programa principal
-  const agenteSecreto = SistemaSeguranca.getInstance();
-  
-  // Tentativa de acesso com senha correta
-  agenteSecreto.acessarBaseSecreta("senhaSuperSecreta123");
-  
-  // Tentativa de acesso com senha incorreta
-  agenteSecreto.acessarBaseSecreta("senhaIncorreta456");
-  
+
+  public acessarBaseSecreta(senha: string): string {
+      if (this.senhaSecreta === senha) {
+          return 'Acesso concedido à Base Secreta.';
+      } else {
+          return 'Acesso negado à Base Secreta.';
+      }
+  }
+}
+
+// Programa principal
+const sistema = SistemaSeguranca.getInstancia();
+console.log(sistema.acessarBaseSecreta('senhaErrada')); // Deve imprimir 'Acesso negado à Base Secreta.'
+console.log(sistema.acessarBaseSecreta('senhaSuperSecreta')); // Deve imprimir 'Acesso concedido à Base Secreta.'
+
